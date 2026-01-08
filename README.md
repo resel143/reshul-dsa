@@ -1,2 +1,2 @@
 # reshul-dsa
-DSA practice in Javascript
+DSA in Javascript
