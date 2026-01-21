@@ -83,19 +83,18 @@ const students = [
 
 
 
-// Q3. Count how many students are currently active
+// Q4. Get names of students who are in semester ≥ 3.
 
-function countActive(arr){
+function getStudentsinSem3(arr){
 
-  let activeStudents = arr.reduce((acc, curr)=>{
-    if(curr.isActive) acc.push(curr)
-
-      return acc;
+  let studNames = arr.reduce((acc, curr)=>{
+      if(curr.semester >= 3) acc.push(curr.name)
+        return acc;
   },[])
 
 
-  return activeStudents.length;
+  return studNames;
 
 }
 
-console.log(countActive(students))
+console.log(getStudentsinSem3(students))
