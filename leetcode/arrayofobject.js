@@ -85,16 +85,49 @@ const students = [
 
 // Q4. Get names of students who are in semester ≥ 3.
 
-function getStudentsinSem3(arr){
+// function getStudentsinSem3(arr){
 
-  let studNames = arr.reduce((acc, curr)=>{
-      if(curr.semester >= 3) acc.push(curr.name)
-        return acc;
+//   let studNames = arr.reduce((acc, curr)=>{
+//       if(curr.semester >= 3) acc.push(curr.name)
+//         return acc;
+//   },[])
+
+
+//   return studNames;
+
+// }
+// console.log(getStudentsinSem3(students))
+
+
+// Q5. Calculate the total fees paid by each student.
+
+function totalFeesByStudent(arr){
+
+  // step #1 - Filter out students names and their fees array
+
+  let students = arr.reduce((acc, curr)=>{
+    acc.push({
+      'name': curr.name,
+      'totalFees': curr.feesPaid
+    })
+    return acc;
   },[])
 
 
-  return studNames;
+  // Step #2 - Get total fees from the array of fees
 
+  for(let item of students){
+    let totalFees = 0;
+
+    for(let fee of item.totalFees){
+      totalFees+=fee
+    }
+
+    item.totalFees = totalFees
+  }
+
+  return students
 }
 
-console.log(getStudentsinSem3(students))
+
+console.log(totalFeesByStudent(students))
