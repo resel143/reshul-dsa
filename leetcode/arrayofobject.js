@@ -42,12 +42,18 @@ const students = [
 ];
 
 
-// Q1 - Arrya of all student names
+// Q2 - Students from Mechanical Department
 
-function studentNames(arr){
-    let studNames = arr.reduce((acc,curr)=>{[...acc, curr.name]},{})
 
-    return studNames
+function mechStudents(arr){
+  let mechNames = arr.reduce((acc, curr)=> {
+    if(curr.department = "Mechanical"){
+      acc.push(curr)
+    }
+    return acc;
+  }, [])
+
+  return mechNames
 }
 
-console.log(studentNames(students))
+console.log(mechStudents(students))
