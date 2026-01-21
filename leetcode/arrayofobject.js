@@ -3,7 +3,7 @@ const students = [
     id: 1,
     name: "Aarav",
     department: "Computer Science",
-    semester: 1,
+    semester: 2,
     feesPaid: [50000, 48000],
     isActive: true
   },
@@ -81,22 +81,18 @@ const students = [
   }
 ];
 
-// Q7. Find the overall average semester fee across all students.
+// Q7. Get students whose latest semester fee > 50,000.
 
+function latestSemFeesStudent(arr){
 
-function overallSemesterFees(arr){
+    let stud = arr.reduce((acc, curr)=>{
+        if(curr.feesPaid.slice(-1)>=50000) acc.push(curr.name)
+          return acc
+    },[])
 
-  let totalFees=0, totalSemesters = 0;
-
-  for(let item of arr){
-      totalSemesters+= item.semester;
-     for(let fee of item.feesPaid)  totalFees+= fee;
-  }
-
-
-  return totalFees/totalSemesters;
+    return stud;
 
 }
 
 
-console.log(overallSemesterFees(students))
+console.log(latestSemFeesStudent(students))
