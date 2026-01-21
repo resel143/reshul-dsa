@@ -81,18 +81,21 @@ const students = [
   }
 ];
 
-// Q7. Get students whose latest semester fee > 50,000.
+// Q9. Group students by department.
 
-function latestSemFeesStudent(arr){
+function groupStudentsByDeptt(arr){
 
     let stud = arr.reduce((acc, curr)=>{
-        if(curr.feesPaid.slice(-1)>=50000) acc.push(curr.name)
-          return acc
-    },[])
+        if(acc[curr.department]){
+          acc[curr.department].push(curr.name)
+        }else{
+          acc[curr.department] = [curr.name]
+        }
 
-    return stud;
-
+        return acc;
+    },{})
+  return stud; 
 }
 
 
-console.log(latestSemFeesStudent(students))
+console.log(groupStudentsByDeptt(students))
