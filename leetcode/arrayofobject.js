@@ -81,53 +81,37 @@ const students = [
   }
 ];
 
+// Q6. Find the average fees per semester for each student.
+
+function avgFeesPerSemester(arr){
 
 
-// Q4. Get names of students who are in semester ≥ 3.
+  // Step 1 - Array of each students, their semester and fees 
 
-// function getStudentsinSem3(arr){
+  let studentData = arr.reduce((acc, curr)=>{
+      acc.push({
+        'name': curr.name,
+        'semester': curr.semester,
+        'avgFees': curr.feesPaid
+      })
 
-//   let studNames = arr.reduce((acc, curr)=>{
-//       if(curr.semester >= 3) acc.push(curr.name)
-//         return acc;
-//   },[])
-
-
-//   return studNames;
-
-// }
-// console.log(getStudentsinSem3(students))
-
-
-// Q5. Calculate the total fees paid by each student.
-
-function totalFeesByStudent(arr){
-
-  // step #1 - Filter out students names and their fees array
-
-  let students = arr.reduce((acc, curr)=>{
-    acc.push({
-      'name': curr.name,
-      'totalFees': curr.feesPaid
-    })
-    return acc;
+      return acc
   },[])
 
-
-  // Step #2 - Get total fees from the array of fees
-
-  for(let item of students){
+  // Step2 - Calculate the Avg Fees
+  for(let item of studentData){
     let totalFees = 0;
 
-    for(let fee of item.totalFees){
-      totalFees+=fee
+
+    for(let fee of item.avgFees){
+      totalFees+= fee
     }
 
-    item.totalFees = totalFees
+    item.avgFees = totalFees/item.semester;
   }
 
-  return students
+  return studentData
+
 }
 
-
-console.log(totalFeesByStudent(students))
+console.log(avgFeesPerSemester(students))
