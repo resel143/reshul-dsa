@@ -38,22 +38,64 @@ const students = [
     semester: 6,
     feesPaid: [48000, 49000, 50000, 51000, 52000, 53000],
     isActive: true
+  },
+  {
+    id: 6,
+    name: "Ananya",
+    department: "Civil",
+    semester: 4,
+    feesPaid: [43000, 44000, 45000, 46000],
+    isActive: true
+  },
+  {
+    id: 7,
+    name: "Vikram",
+    department: "Computer Science",
+    semester: 7,
+    feesPaid: [56000, 57000, 58000, 59000, 60000, 61000, 62000],
+    isActive: false
+  },
+  {
+    id: 8,
+    name: "Neha",
+    department: "Electrical",
+    semester: 1,
+    feesPaid: [41000],
+    isActive: true
+  },
+  {
+    id: 9,
+    name: "Arjun",
+    department: "Mechanical",
+    semester: 2,
+    feesPaid: [46000, 47000],
+    isActive: true
+  },
+  {
+    id: 10,
+    name: "Pooja",
+    department: "Civil",
+    semester: 8,
+    feesPaid: [50000, 51000, 52000, 53000, 54000, 55000, 56000, 57000],
+    isActive: false
   }
 ];
 
 
-// Q2 - Students from Mechanical Department
+
+// Q3. Count how many students are currently active
+
+function countActive(arr){
+
+  let activeStudents = arr.reduce((acc, curr)=>{
+    if(curr.isActive) acc.push(curr)
+
+      return acc;
+  },[])
 
 
-function mechStudents(arr){
-  let mechNames = arr.reduce((acc, curr)=> {
-    if(curr.department = "Mechanical"){
-      acc.push(curr)
-    }
-    return acc;
-  }, [])
+  return activeStudents.length;
 
-  return mechNames
 }
 
-console.log(mechStudents(students))
+console.log(countActive(students))
