@@ -81,21 +81,52 @@ const students = [
   }
 ];
 
-// Q9. Group students by department.
+// Q10. Calculate average fees per semester per department.
 
-function groupStudentsByDeptt(arr){
+function avgFeesPerSemPerDeptt(arr){
 
-    let stud = arr.reduce((acc, curr)=>{
-        if(acc[curr.department]){
-          acc[curr.department].push(curr.name)
-        }else{
-          acc[curr.department] = [curr.name]
+    let depttWiseSegregation = arr.reduce((acc, curr)=>{
+          if(acc[curr.department]){
+            acc[curr.department].push({'name':curr.name, 'feesPaid': curr.feesPaid, 'semester':curr.semester})
+          }else{
+            acc[curr.department] = [{'name':curr.name, 'feesPaid': curr.feesPaid, 'semester':curr.semester}]
+          }
+
+          return acc;
+    },{})
+
+    // looping over objec
+
+    for(let key in depttWiseSegregation){
+
+      let totalSem=0, totalFees=0;
+
+      for(let item of depttWiseSegregation[key]){
+        totalSem+=item.semester;
+        for(let fee of item.feesPaid){
+          totalFees+=fee
         }
+      }
+
+      depttWiseSegregation[key]['totalFees'] = totalFees
+      depttWiseSegregation[key]['totalSemester'] = totalSem
+
+    }
+
+    let currObj = Object.entries(depttWiseSegregation).reduce((acc, [key, value])=>{
+        acc[key] = {'totalFees':value.totalFees, 'totalSemester': value.totalSemester}  
 
         return acc;
     },{})
-  return stud; 
+
+    let finalOutput = Object.entries(currObj).reduce((acc, [key, value])=>{
+      acc[key] = value.totalFees / value.totalSemester
+      return acc;
+    },[])
+
+    return finalOutput;
+    
 }
 
 
-console.log(groupStudentsByDeptt(students))
+console.log(avgFeesPerSemPerDeptt(students))
