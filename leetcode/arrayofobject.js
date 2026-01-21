@@ -81,37 +81,22 @@ const students = [
   }
 ];
 
-// Q6. Find the average fees per semester for each student.
-
-function avgFeesPerSemester(arr){
+// Q7. Find the overall average semester fee across all students.
 
 
-  // Step 1 - Array of each students, their semester and fees 
+function overallSemesterFees(arr){
 
-  let studentData = arr.reduce((acc, curr)=>{
-      acc.push({
-        'name': curr.name,
-        'semester': curr.semester,
-        'avgFees': curr.feesPaid
-      })
+  let totalFees=0, totalSemesters = 0;
 
-      return acc
-  },[])
-
-  // Step2 - Calculate the Avg Fees
-  for(let item of studentData){
-    let totalFees = 0;
-
-
-    for(let fee of item.avgFees){
-      totalFees+= fee
-    }
-
-    item.avgFees = totalFees/item.semester;
+  for(let item of arr){
+      totalSemesters+= item.semester;
+     for(let fee of item.feesPaid)  totalFees+= fee;
   }
 
-  return studentData
+
+  return totalFees/totalSemesters;
 
 }
 
-console.log(avgFeesPerSemester(students))
+
+console.log(overallSemesterFees(students))
