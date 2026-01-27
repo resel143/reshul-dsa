@@ -1,14 +1,12 @@
-class TreeNode {
+class Node {
     constructor(value){
         this.value = value;
-        this.children = [];
+        this.left = null
+        this.right = null
     }
 }
 
 
-const root = new TreeNode(1)
-const child1 = new TreeNode(2)
-const child2 = new TreeNode(3)
-
-
-root.children.push(child1, child2)
+const root = new Node(1)
+const child1 = new Node(2)
+const child2 = new Node(3)
