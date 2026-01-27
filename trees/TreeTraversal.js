@@ -32,4 +32,16 @@ function Preorder(root){
     Preorder(root.right)
 }
 
-Preorder(root)
+// Preorder(root)a
+
+// Post order traversal
+
+function PostOrder(root){
+    if(root == null) return;
+
+    PostOrder(root.left)
+    PostOrder(root.right)
+    console.log(root.value)
+}
+
+PostOrder(root)
