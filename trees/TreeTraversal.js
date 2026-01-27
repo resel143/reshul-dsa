@@ -21,4 +21,15 @@ function inorder(root){
 }
 
 
-inorder(root)
+// inorder(root)
+
+
+// Preorder Traversal
+function Preorder(root){
+    if(root == null) return;
+    console.log(root.value)
+    Preorder(root.left)
+    Preorder(root.right)
+}
+
+Preorder(root)
