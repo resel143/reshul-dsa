@@ -1,2 +1,2 @@
-# reshul-dsa
+# reshul-dsa-concepts
 DSA in Javascript
