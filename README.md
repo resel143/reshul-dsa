@@ -1,2 +1,2 @@
-# reshul-dsa
-DSA in Javascript
+# reshul-dsa-concepts
+DSA Javascript concepts core ones
